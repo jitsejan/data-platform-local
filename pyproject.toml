@@ -6,6 +6,7 @@ authors = ["Jitse-Jan"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+prefect = "^1.2.0"
 
 [tool.poetry.dev-dependencies]
 
