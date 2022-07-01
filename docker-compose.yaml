@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  postgresdb:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: nintendo
+      POSTGRES_USER: postgresuser
+      POSTGRES_PASSWORD: postgrespass
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    ports:
+      - 5423:5432
+    volumes:
+      - ./sourcedata/create.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./sourcedata/insert.sql:/docker-entrypoint-initdb.d/insert_data.sql
+      - ./sourcedata/super_mario_bros_one/:/var/lib/postgresql/csvs/
